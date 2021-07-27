@@ -1,6 +1,5 @@
 #!/usr/bin/python3
 """python module"""
-
 from base_caching import BaseCaching
 
 

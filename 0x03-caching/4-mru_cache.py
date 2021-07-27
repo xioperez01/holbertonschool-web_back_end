@@ -3,8 +3,8 @@
 from base_caching import BaseCaching
 
 
-class LRUCache(BaseCaching):
-    """LRUChache class"""
+class MRUCache(BaseCaching):
+    """MRUCahce class"""
 
     def __init__(self):
         super().__init__()
@@ -17,11 +17,10 @@ class LRUCache(BaseCaching):
         self.cache_data[key] = item
 
         if len(self.cache_data) > BaseCaching.MAX_ITEMS:
-            first = self.get_first_list(self.queue)
-            if first:
-                self.queue.pop(0)
-                del self.cache_data[first]
-                print("DISCARD: {}".format(first))
+            if self.queue:
+                last = self.queue.pop()
+                del self.cache_data[last]
+                print("DISCARD: {}".format(last))
 
         if key not in self.queue:
             self.queue.append(key)
@@ -39,7 +38,3 @@ class LRUCache(BaseCaching):
         if self.queue[length - 1] != item:
             self.queue.remove(item)
             self.queue.append(item)
-
-    @staticmethod
-    def get_first_list(array):
-        return array[0] if array else None
