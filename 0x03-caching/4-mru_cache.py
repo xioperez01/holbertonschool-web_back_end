@@ -11,6 +11,7 @@ class MRUCache(BaseCaching):
         self.queue = []
 
     def put(self, key, item):
+        """Put in cache"""
         if key is None or item is None:
             return
 
@@ -28,12 +29,14 @@ class MRUCache(BaseCaching):
             self.mv_last_list(key)
 
     def get(self, key):
+        """Get form cache"""
         item = self.cache_data.get(key, None)
         if item is not None:
             self.mv_last_list(key)
         return item
 
     def mv_last_list(self, item):
+        """Moves element"""
         length = len(self.queue)
         if self.queue[length - 1] != item:
             self.queue.remove(item)

@@ -11,17 +11,18 @@ class LRUCache(BaseCaching):
         self.queue = []
 
     def put(self, key, item):
+        """Put in cache"""
         if key is None or item is None:
             return
 
         self.cache_data[key] = item
 
         if len(self.cache_data) > BaseCaching.MAX_ITEMS:
-            first = self.get_first_list(self.queue)
-            if first:
+            initial = self.get_first_list(self.queue)
+            if initial:
                 self.queue.pop(0)
-                del self.cache_data[first]
-                print("DISCARD: {}".format(first))
+                del self.cache_data[initial]
+                print("DISCARD: {}".format(initial))
 
         if key not in self.queue:
             self.queue.append(key)
@@ -29,12 +30,14 @@ class LRUCache(BaseCaching):
             self.mv_last_list(key)
 
     def get(self, key):
+        """Get form cache"""
         item = self.cache_data.get(key, None)
         if item is not None:
             self.mv_last_list(key)
         return item
 
     def mv_last_list(self, item):
+        """Moves element"""
         length = len(self.queue)
         if self.queue[length - 1] != item:
             self.queue.remove(item)
@@ -42,4 +45,5 @@ class LRUCache(BaseCaching):
 
     @staticmethod
     def get_first_list(array):
+        """Get first element"""
         return array[0] if array else None

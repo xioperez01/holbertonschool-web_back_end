@@ -23,11 +23,11 @@ class FIFOCache(BaseCaching):
         self.cache_data[key] = item
 
         if len(self.cache_data) > BaseCaching.MAX_ITEMS:
-            first = self.get_first_list(self.queue)
-            if first:
+            initial = self.get_first_list(self.queue)
+            if initial:
                 self.queue.pop(0)
-                del self.cache_data[first]
-                print("DISCARD: {}".format(first))
+                del self.cache_data[initial]
+                print("DISCARD: {}".format(initial))
 
     def get(self, key):
         """Get form cache"""
