@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-""" python module"""
+"""python module"""
 from base_caching import BaseCaching
 
 
@@ -11,6 +11,7 @@ class FIFOCache(BaseCaching):
         self.queue = []
 
     def put(self, key, item):
+        """Put in cache"""
         if key is None or item is None:
             return
 
@@ -29,9 +30,11 @@ class FIFOCache(BaseCaching):
                 print("DISCARD: {}".format(first))
 
     def get(self, key):
+        """Get form cache"""
         return self.cache_data.get(key, None)
 
     def mv_last_list(self, item):
+        """Moves element"""
         length = len(self.queue)
         if self.queue[length - 1] != item:
             self.queue.remove(item)
@@ -39,4 +42,5 @@ class FIFOCache(BaseCaching):
 
     @staticmethod
     def get_first_list(array):
+        """Get first element"""
         return array[0] if array else None
