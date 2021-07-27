@@ -4,5 +4,5 @@ import math
 
 
 def to_str(n: float) -> str:
-    '''takes 2 floats and returns a float'''
+    """returns the string representation of the float."""
     return str(n)
