@@ -1,10 +1,10 @@
 #!/usr/bin/python3
-"""python module"""
+""" python module"""
 from base_caching import BaseCaching
 
 
 class FIFOCache(BaseCaching):
-    """FIFOCache class"""
+    """FIFOCahe class"""
 
     def __init__(self):
         super().__init__()
@@ -22,11 +22,11 @@ class FIFOCache(BaseCaching):
         self.cache_data[key] = item
 
         if len(self.cache_data) > BaseCaching.MAX_ITEMS:
-            initial = self.get_first_list(self.queue)
-            if initial:
+            first = self.get_first_list(self.queue)
+            if first:
                 self.queue.pop(0)
-                del self.cache_data[initial]
-                print("DISCARD: {}".format(initial))
+                del self.cache_data[first]
+                print("DISCARD: {}".format(first))
 
     def get(self, key):
         return self.cache_data.get(key, None)
