@@ -1,4 +1,3 @@
-bob@dylan: ~$ cat 3-main.py
 #!/usr/bin/env python3
 """
 Main file
