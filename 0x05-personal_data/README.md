@@ -1,5 +1,7 @@
 # 0x05. Personal data
 
+📂 _Specializations > Web Stack programming > Back-end_
+
 ## Resources
 
 Read or watch:
