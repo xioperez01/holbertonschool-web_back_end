@@ -17,4 +17,5 @@ def extract_base64_authorization_header(self,
         return None
     if authorization_header[0:6] != 'Basic ':
         return None
-    return authorization_header[6:]
+    basic = authorization_header.split(' ', 1)[1]
+    return basic
