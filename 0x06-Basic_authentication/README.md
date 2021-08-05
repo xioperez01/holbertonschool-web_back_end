@@ -22,7 +22,7 @@ Read or watch:
 
 ## Enviroment
 
-- Allowed editors: **vi**, **vim**, \*_emacs_
+- Allowed editors: **vi**, **vim**, **emac**
 - OS: Ubuntu 14.04 LTS
 - Language: python3 (version 3.4.3)
 - PEP 8 - [Style](https://www.python.org/dev/peps/pep-0008/) // [Docstring](https://sphinxcontrib-napoleon.readthedocs.io/en/latest/example_google.html)
