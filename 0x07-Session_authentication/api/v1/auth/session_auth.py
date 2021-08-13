@@ -8,7 +8,7 @@ from models.user import User
 class SessionAuth(Auth):
     """ inherits from Auth """
 
-    user_by_session_id = {}
+    user_id_by_session_id = {}
 
     def create_session(self, user_id: str = None) -> str:
         """ creates a Session ID for a user_id
@@ -18,7 +18,7 @@ class SessionAuth(Auth):
         if type(user_id) is not str:
             return None
         session_id = str(uuid.uuid4())
-        SessionAuth.user_by_session_id[session_id] = user_id
+        SessionAuth.user_id_by_session_id[session_id] = user_id
         return session_id
 
     def user_id_for_session_id(self, session_id: str = None) -> str:
@@ -27,12 +27,12 @@ class SessionAuth(Auth):
             return None
         if type(session_id) is None:
             return None
-        return SessionAuth.user_by_session_id.get(session_id)
+        return SessionAuth.user_id_by_session_id.get(session_id)
 
     def current_user(self, request=None):
         """ returns a User instance """
-        cookie = self.session_cookie(request)
-        user_id = self.user_id_for_session_id(cookie)
+        cookie_val = self.session_cookie(request)
+        user_id = self.user_id_for_session_id(cookie_val)
         return User.get(user_id)
 
     def destroy_session(self, request=None):
@@ -50,7 +50,7 @@ class SessionAuth(Auth):
             return False
 
         try:
-            del self.user_by_session_id[session_id]
+            del self.user_id_by_session_id[session_id]
         except Exception:
             pass
 
