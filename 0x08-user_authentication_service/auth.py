@@ -8,7 +8,6 @@ import bcrypt
 from uuid import uuid4
 
 
-
 def _hash_password(password: str) -> str:
     """ Takes in string arg, converts to unicode
     Returns salted, hashed pswd as bytestring
