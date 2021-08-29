@@ -4,10 +4,6 @@ from flask_babel import Babel
 from flask import Flask, render_template
 
 
-app = Flask(__name__, template_folder='templates')
-babel = Babel(app)
-
-
 class Config(object):
     """ Class for Babel """
 
@@ -16,6 +12,8 @@ class Config(object):
     BABEL_DEFAULT_TIMEZONE = 'UTC'
 
 
+app = Flask(__name__)
+babel = Babel(app)
 app.config.from_object(Config)
 
 
@@ -30,9 +28,9 @@ def get_locale() -> str:
 
 
 @app.route('/', methods=['GET'], strict_slashes=False)
-def hello_world() -> str:
+def home() -> str:
     """ Basic Template for Babel Implementation"""
-    return render_template("1-index.html")
+    return render_template("4-index.html")
 
 
 if __name__ == "__main__":
