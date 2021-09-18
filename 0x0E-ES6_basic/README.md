@@ -25,6 +25,11 @@
 - Object creation and their properties in ES6
 - Iterators and for-of loops
 
+## Enviroment
+
+- Ubuntu 18.04 LTS
+- NodeJS 12.11.x
+
 ## Autors 🎀
 
 Angie Pérez [![M](https://upload.wikimedia.org/wikipedia/fr/thumb/c/c8/Twitter_Bird.svg/30px-Twitter_Bird.svg.png)](https://twitter.com/xiommyperez)
