@@ -35,8 +35,8 @@ class HolbertonCourse {
 
   set students(students) {
     if (
-      Array.isArray(students) &&
-      students.every((s) => typeof s === 'string')
+      Array.isArray(students)
+      && students.every((s) => typeof s === 'string')
     ) {
       this._students = students;
     } else {
