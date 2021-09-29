@@ -1,55 +1,51 @@
+const calculateNumber = require("./1-calcul");
 const assert = require("assert");
-const calculateNumber = require("./1-calcul.js");
 
-describe("calculateNumber type == SUM", () => {
-  it("checks the output", () => {
-    assert.strictEqual(calculateNumber("SUM", 1.1, 2.5), 4);
-    assert.strictEqual(calculateNumber("SUM", 0.0, 0), 0);
+describe("calculateNumber - SUM", function () {
+  it("output with positive numbers", function () {
+    assert.strictEqual(calculateNumber("SUM", 1, 3), 4);
+    assert.strictEqual(calculateNumber("SUM", 1, 3.7), 5);
   });
-  it("negative numbers", () => {
-    assert.strictEqual(calculateNumber("SUM", -1, 1), 0);
-    assert.strictEqual(calculateNumber("SUM", -1.5, 0), -1);
+  it("output with negative numbers", function () {
+    assert.strictEqual(calculateNumber("SUM", 1, -3.4), -2);
+    assert.strictEqual(calculateNumber("SUM", -5, -3.5), -8);
   });
-  it("checks arguments", () => {
-    assert.strictEqual(isNaN(calculateNumber("SUM", 2.2)), true);
-    assert.strictEqual(isNaN(calculateNumber(2.2, 2.2)), true);
-    assert.strictEqual(isNaN(calculateNumber(2.2)), true);
-    assert.strictEqual(isNaN(calculateNumber()), true);
+  it("check arguments/TypeError", function () {
+    assert.throws(() => calculateNumber("SUM", NaN, 0), { name: "TypeError" });
   });
 });
 
-describe("calculateNumber type == SUBSTRACT", () => {
-  it("checks the output", () => {
-    assert.strictEqual(calculateNumber("SUBSTRACT", 3.1, 2.5), 0);
-    assert.strictEqual(calculateNumber("SUBSTRACT", 0.0, 5), -5);
+describe("calculateNumber - SUBTRACT", function () {
+  it("output with positive numbers", function () {
+    assert.strictEqual(calculateNumber("SUBTRACT", 1, 3), -2);
+    assert.strictEqual(calculateNumber("SUBTRACT", 1, 3.7), -3);
   });
-  it("negative numbers", () => {
-    assert.strictEqual(calculateNumber("SUBSTRACT", -1, 1), -2);
-    assert.strictEqual(calculateNumber("SUBSTRACT", -1.5, 0), -1);
+  it("output with negative numbers", function () {
+    assert.strictEqual(calculateNumber("SUBTRACT", 1, -3.4), 4);
+    assert.strictEqual(calculateNumber("SUBTRACT", -5, -3.5), -2);
   });
-  it("checks arguments", () => {
-    assert.strictEqual(isNaN(calculateNumber("SUBSTRACT", 2.2)), true);
-    assert.strictEqual(isNaN(calculateNumber(2.2, 2.2)), true);
-    assert.strictEqual(isNaN(calculateNumber(2.2)), true);
-    assert.strictEqual(isNaN(calculateNumber()), true);
+  it("check arguments/TypeError", function () {
+    assert.throws(() => calculateNumber("SUBTRACT", NaN, 0), {
+      name: "TypeError",
+    });
   });
 });
-describe("calculateNumber type == DIVIDE", () => {
-  it("check the output", () => {
-    assert.strictEqual(calculateNumber("DIVIDE", 2, 2.5), 0.6666666666666666);
-    assert.strictEqual(calculateNumber("DIVIDE", 0.0, 2), 0);
+
+describe("calculateNumber - DIVIDE", function () {
+  it("output with positive numbers", function () {
+    assert.strictEqual(calculateNumber("DIVIDE", 15, 3), 5);
+    assert.strictEqual(calculateNumber("DIVIDE", 25.4, 3.7), 6.25);
   });
-  it("check negative numbers", () => {
-    assert.strictEqual(calculateNumber("DIVIDE", -1, 1), -1);
+  it("output with negative numbers", function () {
+    assert.strictEqual(calculateNumber("DIVIDE", 60, -3.4), -20);
+    assert.strictEqual(calculateNumber("DIVIDE", -54, -3.5), 18);
   });
-  it("check second argument is 0", () => {
-    assert.strictEqual(calculateNumber("DIVIDE", 2.2, 0), "Error");
+  it("arguments/TypeError", function () {
+    assert.throws(() => calculateNumber("DIVIDE", 0, NaN), {
+      name: "TypeError",
+    });
   });
-  it("check arguments", () => {
-    assert.strictEqual(isNaN(calculateNumber("DIVIDE", 2.2)), true);
-    assert.strictEqual(isNaN(calculateNumber("DIVIDE")), true);
-    assert.strictEqual(isNaN(calculateNumber(2.2, 2.2)), true);
-    assert.strictEqual(isNaN(calculateNumber(2.2)), true);
-    assert.strictEqual(isNaN(calculateNumber()), true);
+  it("division by 0", function () {
+    assert.strictEqual(calculateNumber("DIVIDE", 45, 0), "Error");
   });
 });
